@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'CustomCascades.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CustomCascades',
-        'USER': 'myprojectuser',
+        'NAME': 'customcascades',
+        'USER': 'customcascadesuser',
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',

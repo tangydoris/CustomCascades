@@ -1,3 +1,7 @@
+#Download Postgres
+`$ brew install postgresql`
+
+The following are all terminal commands
 #Creating the Database
 Initially, with help from https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04
 
