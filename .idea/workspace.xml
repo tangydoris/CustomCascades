@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c09fba93-2221-4427-832e-bf47a3e9b65a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomCascades/settings.py" afterPath="$PROJECT_DIR$/CustomCascades/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sanjnaNotes.md" afterPath="$PROJECT_DIR$/sanjnaNotes.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sanjnaNotes.md.swp" afterPath="$PROJECT_DIR$/.sanjnaNotes.md.swp" />
     </list>
     <ignored path="CustomCascades.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +25,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CustomCascades/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="82" column="17" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
+            <state relative-caret-position="375">
+              <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -171,8 +170,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CustomCascades/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="82" column="17" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
+        <state relative-caret-position="375">
+          <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
           <folding />
         </state>
       </provider>
