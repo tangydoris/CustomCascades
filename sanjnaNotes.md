@@ -5,28 +5,28 @@ After deleting all these versions, I started over and reinstalled only 1 instanc
 
 ##Things to remember
 If you are pip installing anything new, remember to commit it to the requirements.txt file with the following command
-`pip freeze > requirements.txt`
+`pip freeze > requirements.txt`<br />
 Then you can commit it to github
 
 When you do a `git pull`, open the virtual environment by:
-1) delete any past instance of virtual environments by:
-`$ deactivate`
-`$ rm -r venv`
-`$ virtualenv venv`
-`$ . venv/bin/activate`
-`$ pip install -r requirements.txt`
+1) delete any past instance of virtual environments by:<br />
+`$ deactivate`<br />
+`$ rm -r venv`<br />
+`$ virtualenv venv`<br />
+`$ . venv/bin/activate`<br />
+`$ pip install -r requirements.txt`<br />
 
-To run the server: `python manage.py runserver`
+To run the server: `python manage.py runserver`<br />
 When I first did this, I got an error message, that led me to configure the postgres. I had to create the database and user on postgres (got help from the postgres app) based off what was in my settings.py. My process went as such:
 
 1) CMD+T to open a new tab in terminal window
 2) open psql by
-`$ psql`
+`$ psql`<br />
 3) type in the following commands into the terminal window
-`CREATE ROLE testuser WITH LOGIN SUPERUSER PASSWORD 'password';`
-`CREATE DATABASE testdatabase WITH OWNER=testuser;`
+`CREATE ROLE testuser WITH LOGIN SUPERUSER PASSWORD 'password';`<br />
+`CREATE DATABASE testdatabase WITH OWNER=testuser;`<br />
 **Please note that this is not for production (unsafe)!**
-This is just how I was able to get the initial app off the ground
+This is just how I was able to get the initial app off the ground<br />
 
 [The URL to assist with Postgresql DB commands](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04)
 
