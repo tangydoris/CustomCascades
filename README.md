@@ -2,7 +2,12 @@
 NYU Large Scale Web Applications Fall 2016 Semester Final Project
 
 ###To Do's: 
-Sanjna/Doris: figure out how to change the DB settings from our testuser and testdatabase to something more secure and deployable
+Figure out how to default 127.0.0.1:8000/micro to just 127.0.0.1:8000
+Able to log in and figure all that stuff out, which is good.
+
+Now let's figure out how to get followers/find followers and then upload CSS documents
+
+Display information relevant to project
 
 ###Have Dones: 
 Have started a Django project within our CustomCascades directory with command
