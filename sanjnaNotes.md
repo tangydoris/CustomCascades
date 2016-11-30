@@ -1,3 +1,13 @@
+#11/30 Notes
+After talking with Chelsea, it appears that we should be doing everything commandwise inside of the virtual environment
+I think is because you want to isolate your project's dependencies from your computer's technologies.
+
+So inside venv, I created an inital user who can login to the admin site
+`(venv) $ python manage.py createsuperuser`
+Username: admin
+Email: admin@example.com
+Password: hello123
+
 #As of Day 2 (11/29)
 Turns out, I had multiple versions of django, python, and postgres running therefore my computer continuously ran into errors in deploying the app.
 
@@ -47,6 +57,6 @@ Initially, with help from https://www.digitalocean.com/community/tutorials/how-t
 
 Give our DB user access rights to the DB we have just created
 `GRANT ALL PRIVILEGES ON DATABASE customcascades TO customcascadesuser;`
-
+[Markdown language helper] (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#emphasis)
 
 
