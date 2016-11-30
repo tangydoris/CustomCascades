@@ -1,6 +1,7 @@
 #11/30 Notes
 After talking with Chelsea, it appears that we should be doing everything commandwise inside of the virtual environment
 I think is because you want to isolate your project's dependencies from your computer's technologies.
+https://www.getfilecloud.com/blog/working-with-virtualenv-on-django-projects/
 
 So inside venv, I created an inital user who can login to the admin site
 `(venv) $ python manage.py createsuperuser`
