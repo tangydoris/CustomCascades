@@ -11,6 +11,17 @@ Username: admin
 Email: admin@example.com
 Password: hello123
 
+After a couple hours, not only does the admin config work but I was able to reverse engineer Scalica to create a login system and posts page
+
+To do's at this point:
+Figure out how to default 127.0.0.1:8000/micro to just 127.0.0.1:8000
+Able to log in and figure all that stuff out, which is good.
+
+Now let's figure out how to get followers/find followers and then upload CSS documents
+
+Display information relevant to project
+
+
 #As of Day 2 (11/29)
 Turns out, I had multiple versions of django, python, and postgres running therefore my computer continuously ran into errors in deploying the app.
 
