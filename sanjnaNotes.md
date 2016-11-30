@@ -28,6 +28,8 @@ When I first did this, I got an error message, that led me to configure the post
 **Please note that this is not for production (unsafe)!**
 This is just how I was able to get the initial app off the ground
 
+[a link](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04)
+
 #As of Day 1 (11/28)
 #Download Postgres
 `$ brew install postgresql`
