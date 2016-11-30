@@ -2,6 +2,8 @@
 After talking with Chelsea, it appears that we should be doing everything commandwise inside of the virtual environment
 I think is because you want to isolate your project's dependencies from your computer's technologies.
 https://www.getfilecloud.com/blog/working-with-virtualenv-on-django-projects/
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
+https://www.postgresql.org/docs/current/static/app-psql.html
 
 So inside venv, I created an inital user who can login to the admin site
 `(venv) $ python manage.py createsuperuser`
