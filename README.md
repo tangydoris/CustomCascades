@@ -1,11 +1,8 @@
 # CustomCascades
 NYU Large Scale Web Applications Fall 2016 Semester Final Project
 
-###To Do's: 
-Figure out how to default 127.0.0.1:8000/micro to just 127.0.0.1:8000
-Able to log in and figure all that stuff out, which is good.
-
-Doris: figure out how to find and upload CSS documents
+###To Do's:
+Doris: figure out how to find and upload CSS documents --> make those models
 
 Display information relevant to project
 
