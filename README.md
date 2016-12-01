@@ -5,7 +5,7 @@ NYU Large Scale Web Applications Fall 2016 Semester Final Project
 Figure out how to default 127.0.0.1:8000/micro to just 127.0.0.1:8000
 Able to log in and figure all that stuff out, which is good.
 
-Now let's figure out how to get followers/find followers and then upload CSS documents
+Doris: figure out how to find and upload CSS documents
 
 Display information relevant to project
 
