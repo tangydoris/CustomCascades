@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^micro/', include('micro.urls', namespace = "micro")),
+    url(r'^', include('micro.urls', namespace = "micro")),
     url(r'^admin/', admin.site.urls),
     # url(r'^users/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
 ]

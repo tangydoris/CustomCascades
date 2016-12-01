@@ -22,6 +22,11 @@ Now let's figure out how to get followers/find followers and then upload CSS doc
 Display information relevant to project
 
 
+--------------
+I was able to default 127.0.0.1:8000/micro to just 127.0.0.1:8000 by adjusting the CustomCascades/urls.py file.
+`url(r'^micro/', include('micro.urls', namespace = "micro")),` changed to `url(r'^', include('micro.urls', namespace = "micro")),`
+
+
 #As of Day 2 (11/29)
 Turns out, I had multiple versions of django, python, and postgres running therefore my computer continuously ran into errors in deploying the app.
 
