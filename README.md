@@ -19,6 +19,9 @@ This project uses:
 
 Use the `requirements.txt` file for what is to be installed in the `venv`
 You can install these requirements by `$ pip install -r requirements.txt` once you are in your virtual environments
+## For initial download on your engine
+`$ brew install postgresql`
+
 
 ## To Run This Project On Your Engine
 1) Git clone the project to your system
