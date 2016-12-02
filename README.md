@@ -36,3 +36,13 @@ In the event that you have to manually install any commands via pip, please do :
 before you commit and/or git pull anything new.
 
 5) run by writing `(venv) $ python manage.py runserver`
+
+## Running migrations
+After you git pull, make sure to run migrations
+$ python manage.py makemigrations css_app
+$ python manage.py migrate
+
+## Create super user for admin console
+$ python manage.py createsuperuser
+
+This automatically asks you to enter username, admin, and password which you can use for the admin console which is at '/admin'

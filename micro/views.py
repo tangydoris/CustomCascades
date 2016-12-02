@@ -48,6 +48,7 @@ def stream(request, user_id):
   return render(request, 'micro/stream.html', context)
 
 def register(request):
+  print("look here")
   if request.method == 'POST':
     form = MyUserCreationForm(request.POST)
     new_user = form.save(commit=True)
@@ -57,6 +58,7 @@ def register(request):
     if user is not None:
       login(request, user)
     else:
+      print("errorororororororo")
       raise Exception
     return home(request)
   else:
