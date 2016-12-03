@@ -1,3 +1,10 @@
+{% if user.is_authenticated %}
+  {{ user.username }}
+  <a href="{% url 'css_app:logout' %}">Log Out</a>
+{% else %}
+  <a href="{% url 'css_app:login' %}">Log In</a>
+{% endif %}
+
 {% if latest_css_file_list %}
     <ul>
     {% for css_file in latest_css_file_list %}

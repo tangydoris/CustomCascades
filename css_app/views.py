@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
 from .models import CSSFile
 
@@ -19,18 +20,6 @@ def index(request):
 		new_css_file = CSSFile(title=title, host=host, css_text=css_text, user=request.user)
 		new_css_file.save()
 	return render(request, 'css_app/index.html', context)
-
-# def post(request):
-#   if request.method == 'POST':
-#     form = PostForm(request.POST)
-#     new_post = form.save(commit=False)
-#     new_post.user = request.user
-#     new_post.pub_date = timezone.now()
-#     new_post.save()
-#     return home(request)
-#   else:
-#     form = PostForm
-#   return render(request, 'micro/post.html', {'form' : form})
 
 def detail(request, cssfile_id):
     css_file = get_object_or_404(CSSFile, pk=cssfile_id)

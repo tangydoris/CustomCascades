@@ -1,4 +1,5 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+
 from . import views
 
 urlpatterns = [
@@ -9,4 +10,6 @@ urlpatterns = [
     url(r'^(?P<cssfile_id>[0-9]+)/results/$', views.results, name='results'),
     # ex: /css_file/5/vote/
     url(r'^(?P<cssfile_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    url('^', include('django.contrib.auth.urls')),
+
 ]
