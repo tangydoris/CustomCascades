@@ -2,9 +2,10 @@
 {% load staticfiles %}
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="{% static 'micro/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}" />
   <title>CustomCascades</title>
-</head> 
+</head>
+
 <body>
   <div id="header">
     {% if user.is_authenticated %}
@@ -15,7 +16,6 @@
     {% endif %}
     {% block header %}{% endblock header %}
   </div>
-
   <div id="sidebar">
     {% block sidebar %}{% endblock sidebar %}
   </div>

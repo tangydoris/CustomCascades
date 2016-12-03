@@ -1,3 +1,6 @@
+{% extends "css_app/base.html" %}
+{% load humanize %}
+{% load staticfiles %}
 
 {% if user.is_authenticated %}
   {{ user.username }}
@@ -6,6 +9,7 @@
   <a href="{% url 'css_app:login' %}">Log In</a>
 {% endif %}
 
+{% block content %}
 {% if latest_css_file_list %}
     <ul>
     {% for css_file in latest_css_file_list %}
@@ -28,3 +32,6 @@
 <input type="submit" value="create_css_file" />
 
 </form>
+
+{% endblock %}
+
