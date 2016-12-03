@@ -1,4 +1,4 @@
-{% extends "micro/base.html" %}
+{% extends "css_app/base.html" %}
 {% load humanize %}
 {% load staticfiles %}
 
@@ -26,8 +26,8 @@
 <form action="" method="POST">
 {% csrf_token %}
 
-<label>Title</label> <input type="text" name="title"> </input>
-<label>Host</label> <input type="text" name="host"> </input>
+<label>Title</label> <input type="text" name="title"></input>
+<label>Host</label> <input type="text" name="host"></input>
 <label> CSS Text </label> <textarea type="textarea" rows="4" cols="50" name="css_text"> </textarea>
 <input type="submit" value="create_css_file" />
 

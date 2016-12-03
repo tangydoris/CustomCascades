@@ -1,3 +1,8 @@
+#12/2 Notes
+Unable to figure out why my css_app/base.html is unable to extend the style.css within the css_app folder. 
+Was able to get the css from micro/style.css. 
+
+
 #11/30 Notes
 After talking with Chelsea, it appears that we should be doing everything commandwise inside of the virtual environment
 I think is because you want to isolate your project's dependencies from your computer's technologies.
