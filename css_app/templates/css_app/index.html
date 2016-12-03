@@ -1,0 +1,22 @@
+{% if latest_css_file_list %}
+    <ul>
+    {% for css_file in latest_css_file_list %}
+        <li><a href="/css_app/{{ css_file.id }}/">{{ css_file.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No css files are available.</p>
+{% endif %}
+
+
+<h1> Upload CSS File </h1>
+
+<form action="" method="POST">
+{% csrf_token %}
+
+<label>Title</label> <input type="text" name="title"></input>
+<label>Host</label> <input type="text" name="host"></input>
+<label> CSS Text </label> <textarea type="textarea" rows="4" cols="50" name="css_text"> </textarea>
+<input type="submit" value="create_css_file" />
+
+</form>
