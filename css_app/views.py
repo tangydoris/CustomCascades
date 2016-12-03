@@ -20,6 +20,22 @@ def index(request):
 		new_css_file.save()
 	return render(request, 'css_app/index.html', context)
 
+# @login_required
+def search_results(request):
+	if (request.method == 'POST'):
+		queriedTitle = request.POST['title']
+		# print("******")
+		print(queriedTitle)
+		# print("*****")
+		hits_list = CSSFile.objects.filter(title=queriedTitle)
+		# print(hits_list)
+		# print("******")
+		context = {'hits_list': hits_list}
+		# return render(request, 'css_app/search_results.html', context)
+		return render(request, 'css_app/search_results.html')
+	else:
+		return render(request, 'css_app/search_results.html')
+
 # def post(request):
 #   if request.method == 'POST':
 #     form = PostForm(request.POST)

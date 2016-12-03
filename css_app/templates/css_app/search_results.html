@@ -1,0 +1,16 @@
+{% if context %}
+	<p>{{ context }}</p>
+    <!-- <ul>
+    {% for result in hits_list %}
+        <li><a href="/css_app/{{ result.id }}/">{{ result.title }}</a></li>
+    {% endfor %}
+     </ul> -->
+{% else %}
+    <p>No results fetched.</p>
+{% endif %}
+
+<form method="post">
+	<input type="text" name="title" class="biginput" id="autocomplete" method="POST" placeholder="enter CSS title">
+	<a href = "css_app/search_results.html"><input type="submit" value="search_results" /></a>
+	{% csrf_token %}
+</form>
