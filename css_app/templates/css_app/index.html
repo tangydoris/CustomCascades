@@ -1,6 +1,11 @@
-{% extends "micro/base.html" %}
+{% extends "css_app/base.html" %}
 {% load humanize %}
 {% load staticfiles %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css_app/home_page.css' %}" />
+ {% endblock %}
+
 
 {% if user.is_authenticated %}
   {{ user.username }}
@@ -11,11 +16,10 @@
 
 {% block content %}
 {% if latest_css_file_list %}
-    <ul>
+	<h1> Your CSS Files</h1>
     {% for css_file in latest_css_file_list %}
         <li><a href="/css_app/{{ css_file.id }}/">{{ css_file.title }}</a></li>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No css files are available.</p>
 {% endif %}
@@ -28,10 +32,30 @@
 
 <label>Title</label> <input type="text" name="title"> </input>
 <label>Host</label> <input type="text" name="host"> </input>
+<label>Description</label> <input type="text" name="description"> </input>
 <label> CSS Text </label> <textarea type="textarea" rows="4" cols="50" name="css_text"> </textarea>
 <input type="submit" value="create_css_file" />
 
 </form>
 
-{% endblock %}
+<h1>
+	Trending Themes
+</h1>
 
+{% if trending_css_file_list %}
+
+	<div class="trending_files_container">
+    {% for css_file in trending_css_file_list %}
+        <div class="trending_css_row">
+        	<div class="css_row_inner">
+        	    <p><a class="trending_css_file_titles" href="/css_app/{{ css_file.id }}/">{{ css_file.title }}</a> <span class="hostText">- {{ css_file.host }}</span></p>
+        		<p>{{ css_file.description }} <span class="button_holder"><a class="trending_action_buttons" href="www.google.com">Save</a><a class="trending_action_buttons" href="/css_app/upvote/{{ css_file.id }}">Upvote</a></span></p>
+        		<span class="vote_count">+ {{ css_file.vote_count }}</span>
+        	</div>
+
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}

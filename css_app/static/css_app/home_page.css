@@ -1,0 +1,76 @@
+*{
+	font-family: sans-serif;
+}
+
+a{
+	color: #3498db !important;
+}
+
+h1{
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	color: #2c3e50;
+	font-size: 34px;
+}
+
+
+.trending_css_row{
+	background-color: white;
+	height: 70px;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+	box-shadow: 5px 5px 2.5px #888888;
+}
+
+.trending_files_container{
+	background-color: #3498db;
+	width: 600px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	box-shadow: 5px 5px 2.5px #888888;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.trending_css_file_titles{
+	color: #1abc9c !important;
+}
+
+.hostText{
+	color: #95a5a6;
+	font-size: 13px;
+}
+
+.css_row_inner{
+	padding-left: 6px;
+	position: relative;
+}
+
+.vote_count{
+	position: absolute;
+	top: -9px;
+	right: 9px;
+	color: #2c3e50;
+}
+
+.button_holder{
+	float: right;
+
+}
+.trending_action_buttons{
+	padding: 4px;
+	border-radius: 2px;
+	margin-right: 5px;
+	color: white !important;
+	background-color: #1abc9c;
+}
+
+.upvote_button{
+
+}

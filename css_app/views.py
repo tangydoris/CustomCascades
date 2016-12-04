@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
@@ -11,13 +11,15 @@ from .models import CSSFile
 @login_required
 def index(request):
 	latest_css_file_list = CSSFile.objects.order_by('-created_at')[:5]
-	context = {'latest_css_file_list': latest_css_file_list}
+	trending_css_file_list = CSSFile.objects.order_by('-vote_count')[:5]
+	context = {'latest_css_file_list': latest_css_file_list, 'trending_css_file_list':trending_css_file_list}
 	if(request.method == 'POST'):
 		# DO THE POST STUFF
 		title = request.POST['title']
 		host = request.POST['host']
 		css_text = request.POST['css_text']
-		new_css_file = CSSFile(title=title, host=host, css_text=css_text, user=request.user)
+		description = request.POST['description']
+		new_css_file = CSSFile(title=title, host=host, css_text=css_text, user=request.user, description=description)
 		new_css_file.save()
 	return render(request, 'css_app/index.html', context)
 
@@ -58,5 +60,9 @@ def results(request, cssfile_id):
 	response = "You are looking at the results of cssfile %s."
 	return HttpResponse(results % cssfile_id)
 
-def vote(request, cssfile_id):
-	return HttpResponse("You're voting on cssfile %s" % cssfile_id)
+def upvote(request, cssfile_id):
+	css_file = CSSFile.objects.get(pk=cssfile_id)
+	css_file.vote_count += 1
+	css_file.save()
+
+	return redirect('/css_app')

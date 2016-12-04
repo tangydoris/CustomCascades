@@ -11,9 +11,8 @@ class CSSFile(models.Model):
 	host = models.CharField(max_length=200)
 	css_text = models.TextField()
   	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+  	description = models.CharField(max_length=700)
   	created_at = models.DateTimeField('date published', default=datetime.now, blank=True)
 
   	def __str__(self):
   		return self.title + " " + self.host
-
-

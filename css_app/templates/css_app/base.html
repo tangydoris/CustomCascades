@@ -3,6 +3,8 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'css_app/style.css' %}" />
+  {% block styles %}
+  {% endblock %}
   <title>CustomCascades</title>
 </head>
 <body>
@@ -16,17 +18,8 @@
     {% block header %}{% endblock header %}
   </div>
 
-  <div id="sidebar">
-    {% block sidebar %}{% endblock sidebar %}
-  </div>
-
   <div id="content">
     {% block content %}{% endblock content %}
-  </div>
-
-  <div id="footer">
-    <p>Copyright CustomCascades</p>
-    {% block footer %}{% endblock footer %}
   </div>
 
 </body>
