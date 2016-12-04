@@ -11,5 +11,6 @@ urlpatterns = [
     # ex: /css_app/search_results/
     url(r'^search_results/$', views.search_results, name="search_results"),
    	url(r'^upvote/(?P<cssfile_id>[0-9]+)/$', views.upvote, name='upvote'),
+   	url(r'^remove/(?P<cssfile_id>[0-9]+)/$', views.remove, name='remove'),
     url('^', include('django.contrib.auth.urls')),
 ]

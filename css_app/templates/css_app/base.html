@@ -10,7 +10,7 @@
 <body>
   <div id="header">
     {% if user.is_authenticated %}
-      {{ user.username }}
+      Hello, {{ user.username }}
       <a href="{% url 'micro:logout' %}">Log Out</a>
     {% else %}
       <a href="{% url 'micro:login' %}">Log In</a>

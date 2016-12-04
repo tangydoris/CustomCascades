@@ -12,8 +12,34 @@ h1{
 	margin-bottom: 40px;
 	color: #2c3e50;
 	font-size: 34px;
+	letter-spacing: 1px;
+
 }
 
+#submitCssFileButton{
+	margin-top: 40px;
+	position: absolute;
+	right: 20px;
+	padding: 7px;
+	border-radius: 2px;
+	margin-right: 5px;
+	color: white !important;
+	background-color: #1abc9c;
+	font-size: 15px;
+	border:none;
+}
+
+.textInput{
+  	width: 400px;
+  	height: 30px;
+  	margin-left: 15px;
+  	font-size: 18px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 10px;
+	border-radius: 3px;
+}
 
 .trending_css_row{
 	background-color: white;
@@ -27,7 +53,7 @@ h1{
 	box-shadow: 5px 5px 2.5px #888888;
 }
 
-.trending_files_container{
+.trending_files_container, .upload_css_file_container{
 	background-color: #3498db;
 	width: 600px;
 	padding-top: 40px;
@@ -35,7 +61,11 @@ h1{
 	box-shadow: 5px 5px 2.5px #888888;
 	margin-left: auto;
 	margin-right: auto;
+}
 
+.upload_css_file_container{
+	position: relative;
+	padding-bottom: 80px;
 }
 
 .trending_css_file_titles{
@@ -71,6 +101,17 @@ h1{
 	background-color: #1abc9c;
 }
 
+.formInputHolder{
+	padding-left: 40px;
+	height: 50px;
+	color: white;
+	letter-spacing: 1px;
+}
+
 .upvote_button{
 
+}
+
+.cssFileTitleLink{
+	color: black !important;
 }

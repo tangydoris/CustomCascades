@@ -10,7 +10,7 @@ from .models import CSSFile
 
 @login_required
 def index(request):
-	latest_css_file_list = CSSFile.objects.order_by('-created_at')[:5]
+	latest_css_file_list = CSSFile.objects.filter(user=request.user).order_by('-created_at')
 	trending_css_file_list = CSSFile.objects.order_by('-vote_count')[:5]
 	context = {'latest_css_file_list': latest_css_file_list, 'trending_css_file_list':trending_css_file_list}
 	if(request.method == 'POST'):
@@ -64,5 +64,9 @@ def upvote(request, cssfile_id):
 	css_file = CSSFile.objects.get(pk=cssfile_id)
 	css_file.vote_count += 1
 	css_file.save()
-
 	return redirect('/css_app')
+
+def remove(request, cssfile_id):
+	css_file = CSSFile.objects.filter(id=cssfile_id).delete()
+	return redirect('/css_app')
+
