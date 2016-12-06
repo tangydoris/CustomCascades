@@ -1,0 +1,137 @@
+body {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+div {
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-size: 34px;
+    letter-spacing: 1px;
+}
+
+.message {
+    height: 20px;
+    background: #eee;
+    padding: 5px;
+}
+
+.specButton {
+    text-align: left;
+    position: relative;
+    margin-top: 20px;
+    left: 20px;
+    padding: 7px;
+    border-radius: 2px;
+    margin-left: 5px;
+    color: white !important;
+    font-size: 15px;
+    border:none;
+    background: #9b59b6;
+}
+
+.remove{
+    position: absolute;
+    right: 20px;
+    padding: 7px;
+    margin-top: -48px;
+    border-radius: 2px;
+    margin-right: 35px;
+    color: white !important;
+    background-color: #e74c3c;
+    font-size: 15px;
+    border:none;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: #3498db;
+    width: 600px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-shadow: 5px 5px 2.5px #888888;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.savedHost {
+    background-color: white;
+    height: 60px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    box-shadow: 5px 5px 2.5px #888888;
+}
+
+.nameInput{
+    width: 400px;
+    height: 30px;
+    margin-left: 15px;
+    font-size: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+
+.idInput {
+    width: 100px;
+    height: 30px;
+    margin-left: 15px;
+    font-size: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+
+.formInputHolder{
+    padding-left: 40px;
+    height: 50px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.chosen {
+    border: 2px solid #34495e;
+}
+
+.hostTitle {
+    color: #1abc9c !important;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.specText{
+    color: #95a5a6;
+    font-size: 15px;
+}
+
+#add {
+    padding-bottom: 10px;
+}
+
+#saveHost {
+    margin-top: 20px;
+    position: absolute;
+    right: 20px;
+    padding: 7px;
+    border-radius: 2px;
+    margin-right: 5px;
+    color: white !important;
+    background-color: #1abc9c;
+    font-size: 15px;
+    border:none;
+}

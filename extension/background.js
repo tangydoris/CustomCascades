@@ -7,12 +7,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             host = host.split('/')[0];
             storage.get('ccHosts', function(items) {
                 var found = 0;
-                var spec = "";
+                var spec = 'popular'; //default
                 if (items.ccHosts) {
                     for (var i = 0; i < items.ccHosts.length; i++) {
                         if (items.ccHosts[i].host == host) {
                             found = 1;
                             spec = items.ccHosts[i].spec;
+                            if (spec == 'id') {
+                                host = items.ccHosts[i].id;
+                            }
                             break;
                         }
                     }
@@ -20,7 +23,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                 if (found) {
                     var req = new XMLHttpRequest();
                     var url = 'http://localhost:8000/css_app/api/';
-                    url += host + "/" + spec;
+                    url += host + '/' + spec;
                     req.open('GET', url, true);
                     req.addEventListener('load', function() {
                         var CSS = JSON.parse(req.responseText);

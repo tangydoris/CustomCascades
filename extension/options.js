@@ -1,77 +1,97 @@
 var storage = chrome.storage.local;
-var popularButton = document.querySelector('button.popular');
-var recentButton = document.querySelector('button.recent');
+var popularButton = document.getElementById('popular');
+var recentButton = document.getElementById('recent');
+var idButton = document.getElementById('fileId');
+var idInput = document.querySelector('input.idInput');
+var saveButton = document.getElementById('saveHost')
 var hostInput = document.querySelector('input.nameInput');
-popularButton.addEventListener('click', save.bind(popularButton));
-recentButton.addEventListener('click', save.bind(recentButton));
-var message = document.querySelector('.message');
+popularButton.addEventListener('click', toggleChosen.bind(popularButton));
+recentButton.addEventListener('click', toggleChosen.bind(recentButton));
+idButton.addEventListener('click', toggleChosen.bind(idButton));
+saveButton.addEventListener('click', save);
 
 function load() {
-    storage.get({'ccHosts': []}, function (result) {
-        var hosts = result.ccHosts;
+    storage.get({'ccHosts': []}, function (items) {
+        var hosts = items.ccHosts;
         for (var i = 0; i < hosts.length; i++) {
-            var div = document.createElement('div');
-            document.body.appendChild(div);
-            div.id = hosts[i].host;
-            var hostElement = document.createTextNode(hosts[i].host + " (" + hosts[i].spec + ") ");
-            div.appendChild(hostElement);
-            var removeButton = document.createElement('button');
-            removeButton.host = hosts[i].host;
-            removeButton.addEventListener('click', remove.bind(removeButton));
-            removeButton.textContent = 'Remove';
-            div.appendChild(removeButton);
+            appendSaved(hosts[i].host, hosts[i].spec);
         }
     });
 }
 
 function save() {
-    var that = this;
-    var hostname = hostInput.value;
+    var host = hostInput.value;
+    hostInput.value = '';
     storage.get('ccHosts', function(items) {
         var hosts = items.ccHosts;
         if (!hosts) {
             hosts = [];
         }
-        var spec = that.classList[0];
-        hosts.push({'host':hostname, 'spec': spec});
+        var spec = 'popular'; //default
+        var id = '';
+        if (recentButton.classList.contains('chosen')) {
+            spec = 'recent';
+        } else if (idButton.classList.contains('chosen')) {
+            spec = 'id';
+            id = idInput.value;
+        }
+        idInput.value = '';
+        recentButton.classList.remove('chosen');
+        popularButton.classList.remove('chosen');
+        idButton.classList.remove('chosen');
+        hosts.push({'host':host, 'spec': spec, 'id': id});
         storage.set({'ccHosts': hosts}, function() {
-            message.innerText = 'Settings saved for ' + hostname;
-            var div = document.createElement('div');
-            document.body.appendChild(div);
-            div.id = hostname;
-            var hostElement = document.createTextNode(hostname + " (" + spec + ") ");
-            div.appendChild(hostElement);
-            var removeButton = document.createElement('button');
-            removeButton.host = hostname;
-            removeButton.addEventListener('click', remove.bind(removeButton));
-            removeButton.textContent = 'Remove';
-            div.appendChild(removeButton);
+            appendSaved(host, spec);
         });
     });
-    hostInput.value = '';
 }
 
 function remove() {
-    var hostname = this.host;
+    var host = this.host;
     storage.get('ccHosts', function(items) {
         var hosts = items.ccHosts;
         if (!hosts) {
             return;
         }
-        var i;
         for (var i = 0; i < hosts.length; i++) {
-            if (hosts[i].host == hostname) {
+            if (hosts[i].host == host) {
                 break;
             }
         }
         hosts.splice(i, 1);
         storage.set({'ccHosts': hosts}, function() {
-            var element = document.getElementById(hostname);
+            var element = document.getElementById(host);
             element.parentElement.removeChild(element);
-            message.innerText = 'removed css';
         });
     });
-    hostInput.value = '';
+}
+
+function toggleChosen() {
+    popularButton.classList.remove('chosen');
+    recentButton.classList.remove('chosen');
+    idButton.classList.remove('chosen');
+    this.classList.add('chosen');
+}
+
+function appendSaved(host, spec) {
+    var div = document.createElement('div');
+    div.classList.add('savedHost');
+    document.getElementById('saved').appendChild(div);
+    div.id = host;
+    var hostElement = document.createElement('p');
+    hostElement.classList.add('hostTitle');
+    hostElement.textContent = host;
+    var specText = document.createElement("span");
+    specText.classList.add('specText');
+    specText.textContent = " - " + spec;
+    hostElement.appendChild(specText);
+    div.appendChild(hostElement);
+    var removeButton = document.createElement('button');
+    removeButton.host = host;
+    removeButton.addEventListener('click', remove.bind(removeButton));
+    removeButton.textContent = 'Remove';
+    removeButton.classList.add('remove');
+    div.appendChild(removeButton);
 }
 
 load();

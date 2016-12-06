@@ -78,11 +78,14 @@ def save(request, cssfile_id):
 	return redirect('/css_app')
 
 def api_detail(request, host, spec):
-	queried_files = (CSSFile.objects.filter(host=host))
-	if queried_files:
-		if spec == 'recent':
-			return JsonResponse({'css': queried_files.order_by('-created_at')[:1][0].css_text})
-		else:
-			return JsonResponse({'css': queried_files.order_by('-vote_count')[:1][0].css_text})
-	else:
-		return JsonResponse({'error': 'no file saved for this host'})
+	queried_file = 0
+	if spec == 'recent':
+		queried_file = (CSSFile.objects.filter(host=host)).order_by('-created_at')[:1][0]
+	elif spec == 'id':
+		queried_file = (CSSFile.objects.get(pk=host))
+	else: #default to popular
+		queried_file = (CSSFile.objects.filter(host=host)).order_by('-vote_count')[:1][0]
+
+	if queried_file:
+		return JsonResponse({'css': queried_file.css_text})
+	return JsonResponse({'error': 'no file saved for this host'})
