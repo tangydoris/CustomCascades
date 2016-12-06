@@ -24,21 +24,25 @@ def index(request):
 		new_css_file.save()
 	return render(request, 'css_app/index.html', context)
 
-# @login_required
-def search_results(request):
-	if (request.method == 'POST'):
-		queriedTitle = request.POST['title']
-		# print("******")
-		print(queriedTitle)
-		# print("*****")
-		hits_list = CSSFile.objects.filter(title=queriedTitle)
-		# print(hits_list)
-		# print("******")
-		context = {'hits_list': hits_list}
-		# return render(request, 'css_app/search_results.html', context)
-		return render(request, 'css_app/search_results.html')
-	else:
-		return render(request, 'css_app/search_results.html')
+@login_required
+def search(request):
+	print(request)
+	if ('q' in request.GET):
+		query_string = request.GET['q']
+		query_set = CSSFile.objects.filter(host__icontains=query_string)
+		
+		# if filter is requested
+		if ('filter_by' in request.GET):
+			filt = request.GET['filter_by']
+			if (filt == "trending"):
+				query_set = query_set.order_by('-vote_count')
+
+		results_list = list(query_set)
+		context = {'results_list': results_list, 'query': query_string}
+		return render(request, 'css_app/search.html', context)
+
+	return render(request, 'css_app/search.html')
+
 
 # def post(request):
 #   if request.method == 'POST':

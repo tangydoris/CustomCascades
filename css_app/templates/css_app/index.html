@@ -14,24 +14,30 @@
 {% endif %}
 
 {% block content %}
+<h1>Search for Domain</h1>
+<div class="search_form_container">
+	<div class="search_form">
+		<form method="get" action="/css_app/search/">
+		   	<input type="text" class="search_text" name="q" id="q" placeholder="www.largescale.edu"/>
+		   	<input type="submit" class="search_button" value="search"/>
+		</form>
+	</div>
+</div>
+
 {% if latest_css_file_list %}
 	<h1> Your CSS Files</h1>
 	<div class="trending_files_container">
     {% for css_file in latest_css_file_list %}
-
     	<div class="trending_css_row">
            	<div class="css_row_inner">
 	    		<p><a class="trending_css_file_titles" href="/css_app/{{ css_file.id }}/">{{ css_file.title }}</a> <span class="hostText">- {{ css_file.host }}</span></p>
 	    		<p>{{ css_file.description }} <span class="button_holder"><a class="trending_action_buttons" style="background-color: #e74c3c" href="/css_app/remove/{{ css_file.id }}">Remove</a><a class="trending_action_buttons" style="background-color: #2980b9" href="/css_app/{{ css_file.id }}/">Details</a></span></p>
     		</div>
-
-
     	</div>
-
     {% endfor %}
     </div>
 {% else %}
-    <p>No css files are available. Upload your first one below</p>
+    <h1>You have no CSS files. Upload your first one below!</h1>
 {% endif %}
 
 <h1> Upload CSS File </h1>
