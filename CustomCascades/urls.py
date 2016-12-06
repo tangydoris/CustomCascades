@@ -19,9 +19,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^micro/', include('micro.urls', namespace = "micro")),
-    # url(r'^', include('micro.urls', namespace = "micro")),
-    url(r'^', include('css_app.urls', namespace="css_app")),
+    url(r'^', include('micro.urls', namespace = "micro")),
+    # url(r'^', include('css_app.urls', namespace="css_app")),
     url(r'^admin/', admin.site.urls),
-    # url(r'^css_app/', include('css_app.urls', namespace="css_app")),
+    url(r'^css_app/', include('css_app.urls', namespace="css_app")),
     # url(r'^users/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
 ]
