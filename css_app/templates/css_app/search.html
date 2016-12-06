@@ -1,0 +1,39 @@
+{% extends "css_app/base.html" %}
+{% load humanize %}
+{% load staticfiles %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css_app/home_page.css' %}" />
+{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+
+<div class="filter_container">
+    <form class="filter_form" method="get" action="/css_app/search/?q={{query}}">
+        <select class="filter_dropdown" name="filter_by" id="filter_by">
+            <option value="none">-------------</option>
+            <option value="trending">Most Trending</option>
+        </select>
+        <input type="hidden" name="q" id="q" value="{{query}}"/>
+        <input type="submit" class="search_button" value="Filter"/>
+    </form>
+</div>
+
+{% if results_list %}
+    <div class="search_form_container">
+        {% for css_file in results_list %}
+            <div class="trending_css_row">
+                <div class="css_row_inner">
+                    <p><a class="trending_css_file_titles" href="/css_app/{{ css_file.id }}/">{{ css_file.title }}</a> <span class="hostText">- {{ css_file.host }}</span></p>
+                    <p>{{ css_file.description }} <span class="button_holder"><a class="trending_action_buttons" style="background-color: #2980b9" href="/css_app/save/{{ css_file.id }}">Save</a><a class="trending_action_buttons" href="/css_app/upvote/{{ css_file.id }}">Upvote</a></span></p>
+                <span class="vote_count">+ {{ css_file.vote_count }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h1>No CSS files for domain '{{query}}'.</h1>
+{% endif %}
+
+{% endblock %}
