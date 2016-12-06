@@ -15,6 +15,9 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                             spec = items.ccHosts[i].spec;
                             if (spec == 'id') {
                                 host = items.ccHosts[i].id;
+                            } else {
+                                host = md5(host).substring(0, 16);
+                                alert(host);
                             }
                             break;
                         }

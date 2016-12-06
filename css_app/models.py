@@ -9,6 +9,7 @@ class CSSFile(models.Model):
 	vote_count = models.IntegerField(default=0)
 	title = models.CharField(max_length=200)
 	host = models.CharField(max_length=200)
+	host_hash = models.CharField(max_length=200)
 	css_text = models.TextField()
   	user = models.ForeignKey(settings.AUTH_USER_MODEL)
   	description = models.CharField(max_length=700)

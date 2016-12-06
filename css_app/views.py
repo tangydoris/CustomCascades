@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
 from .models import CSSFile
+from hashlib import md5
 
 # Create your views here.
 
@@ -18,9 +19,10 @@ def index(request):
 		# DO THE POST STUFF
 		title = request.POST['title']
 		host = request.POST['host']
+		host_hash = (md5(host.encode())).hexdigest()[:16]
 		css_text = request.POST['css_text']
 		description = request.POST['description']
-		new_css_file = CSSFile(title=title, host=host, css_text=css_text, user=request.user, description=description)
+		new_css_file = CSSFile(title=title, host=host, host_hash=host_hash, css_text=css_text, user=request.user, description=description)
 		new_css_file.save()
 	return render(request, 'css_app/index.html', context)
 
@@ -30,7 +32,7 @@ def search(request):
 	if ('q' in request.GET):
 		query_string = request.GET['q']
 		query_set = CSSFile.objects.filter(host__icontains=query_string)
-		
+
 		# if filter is requested
 		if ('filter_by' in request.GET):
 			filt = request.GET['filter_by']
@@ -82,13 +84,16 @@ def save(request, cssfile_id):
 	return redirect('/css_app')
 
 def api_detail(request, host, spec):
+	queried_files = 0
 	queried_file = 0
+	if spec == 'popular':
+		queried_files = (CSSFile.objects.filter(host_hash=host)).order_by('-vote_count')
 	if spec == 'recent':
-		queried_file = (CSSFile.objects.filter(host=host)).order_by('-created_at')[:1][0]
-	elif spec == 'id':
+		queried_files = (CSSFile.objects.filter(host_hash=host)).order_by('-created_at')
+	if queried_files:
+		queried_file = queried_files[0]
+	if spec == 'id':
 		queried_file = (CSSFile.objects.get(pk=host))
-	else: #default to popular
-		queried_file = (CSSFile.objects.filter(host=host)).order_by('-vote_count')[:1][0]
 
 	if queried_file:
 		return JsonResponse({'css': queried_file.css_text})
