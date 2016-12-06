@@ -13,5 +13,7 @@ urlpatterns = [
    	url(r'^upvote/(?P<cssfile_id>[0-9]+)/$', views.upvote, name='upvote'),
    	url(r'^remove/(?P<cssfile_id>[0-9]+)/$', views.remove, name='remove'),
    	url(r'^save/(?P<cssfile_id>[0-9]+)/$', views.save, name='save'),
+	#for extension
+	url(r'^api/(?P<host>[\w.-]+)/(?P<spec>[\w-]+)/$', views.api_detail, name='api_detail'),
     url('^', include('django.contrib.auth.urls')),
 ]

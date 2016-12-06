@@ -1,0 +1,23 @@
+{
+    "name": "Custom Cascades",
+    "description": "Add custom CSS to any web page.",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs",
+        "background",
+        "*://*/*"
+    ],
+    "options_page": "options.html",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_scripts": [{
+        "matches": ["*://*/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+    }]
+}

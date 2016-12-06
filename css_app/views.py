@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
@@ -76,3 +77,12 @@ def save(request, cssfile_id):
 	print u
 	return redirect('/css_app')
 
+def api_detail(request, host, spec):
+	queried_files = (CSSFile.objects.filter(host=host))
+	if queried_files:
+		if spec == 'recent':
+			return JsonResponse({'css': queried_files.order_by('-created_at')[:1][0].css_text})
+		else:
+			return JsonResponse({'css': queried_files.order_by('-vote_count')[:1][0].css_text})
+	else:
+		return JsonResponse({'error': 'no file saved for this host'})
