@@ -3,10 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.utils import timezone
 from .models import Following, Post, FollowingForm, PostForm, MyUserCreationForm
-
+from django.shortcuts import render, redirect
 
 # Anonymous views
 #################
@@ -70,20 +69,22 @@ def register(request):
 @login_required
 def home(request):
   '''List of recent posts by people I follow'''
-  try:
-    my_post = Post.objects.filter(user=request.user).order_by('-pub_date')[0]
-  except IndexError:
-    my_post = None
-  follows = [o.followee_id for o in Following.objects.filter(
-    follower_id=request.user.id)]
-  post_list = Post.objects.filter(
-      user_id__in=follows).order_by('-pub_date')[0:10]
-  context = {
-    'post_list': post_list,
-    'my_post' : my_post,
-    'post_form' : PostForm
-  }
-  return render(request, 'micro/home.html', context)
+  # try:
+  #   my_post = Post.objects.filter(user=request.user).order_by('-pub_date')[0]
+  # except IndexError:
+  #   my_post = None
+  # follows = [o.followee_id for o in Following.objects.filter(
+  #   follower_id=request.user.id)]
+  # post_list = Post.objects.filter(
+  #     user_id__in=follows).order_by('-pub_date')[0:10]
+  # context = {
+  #   'post_list': post_list,
+  #   'my_post' : my_post,
+  #   'post_form' : PostForm
+  # }
+  # return render(request, 'micro/home.html', context)
+  return redirect('/css_app')
+
 
 # Allows to post something and shows my most recent posts.
 @login_required
