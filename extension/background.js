@@ -13,17 +13,14 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                         if (items.ccHosts[i].host == host) {
                             found = 1;
                             spec = items.ccHosts[i].spec;
-                            if (spec == 'id') {
-                                host = items.ccHosts[i].id;
-                            } else {
-                                host = md5(host).substring(0, 16);
-                            }
+                            host = md5(host).substring(0, 16);
                             break;
                         }
                     }
                 }
                 if (found) {
                     var req = new XMLHttpRequest();
+                    // var url = 'http://104.155.165.196:8000/css_app/api/';
                     var url = 'http://localhost:8000/css_app/api/';
                     url += host + '/' + spec;
                     req.open('GET', url, true);

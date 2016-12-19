@@ -1,13 +1,10 @@
 var storage = chrome.storage.local;
 var popularButton = document.getElementById('popular');
 var recentButton = document.getElementById('recent');
-var idButton = document.getElementById('fileId');
-var idInput = document.querySelector('input.idInput');
 var saveButton = document.getElementById('saveHost')
 var hostInput = document.querySelector('input.nameInput');
 popularButton.addEventListener('click', toggleChosen.bind(popularButton));
 recentButton.addEventListener('click', toggleChosen.bind(recentButton));
-idButton.addEventListener('click', toggleChosen.bind(idButton));
 saveButton.addEventListener('click', save);
 
 function load() {
@@ -28,18 +25,13 @@ function save() {
             hosts = [];
         }
         var spec = 'popular'; //default
-        var id = '';
         if (recentButton.classList.contains('chosen')) {
             spec = 'recent';
-        } else if (idButton.classList.contains('chosen')) {
-            spec = 'id';
-            id = idInput.value;
         }
-        idInput.value = '';
         recentButton.classList.remove('chosen');
         popularButton.classList.remove('chosen');
-        idButton.classList.remove('chosen');
-        hosts.push({'host':host, 'spec': spec, 'id': id});
+        // hosts.push({'host':host, 'spec': spec, 'id': id});
+        hosts.push({'host':host, 'spec': spec});
         storage.set({'ccHosts': hosts}, function() {
             appendSaved(host, spec);
         });
@@ -69,7 +61,6 @@ function remove() {
 function toggleChosen() {
     popularButton.classList.remove('chosen');
     recentButton.classList.remove('chosen');
-    idButton.classList.remove('chosen');
     this.classList.add('chosen');
 }
 
