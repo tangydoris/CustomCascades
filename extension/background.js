@@ -20,7 +20,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
                 }
                 if (found) {
                     var req = new XMLHttpRequest();
-                    var url = 'http://104.155.165.196:8000/css_app/api/';
+                    var url = 'http://104.154.249.243:8000/css_app/api/';
                     url += host + '/' + spec;
                     req.open('GET', url, true);
                     req.addEventListener('load', function() {
